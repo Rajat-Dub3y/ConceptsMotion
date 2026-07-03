@@ -1,0 +1,131 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Concepts in Motion — editorial design system.
+ * Bone canvas, ink black, charcoal, warm neutrals.
+ * Fonts loaded via <link> in src/routes/__root.tsx.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-bone: var(--bone);
+  --color-ink: var(--ink);
+  --color-charcoal: var(--charcoal);
+  --color-warm: var(--warm-neutral);
+  --color-smoke: var(--smoke);
+
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Brand tokens */
+  --bone: oklch(0.965 0.008 85);
+  --ink: oklch(0.19 0.004 60);
+  --charcoal: oklch(0.28 0.005 60);
+  --warm-neutral: oklch(0.68 0.02 65);
+  --smoke: oklch(0.9 0.006 75);
+
+  /* Semantic — map shadcn tokens to brand palette */
+  --background: var(--bone);
+  --foreground: var(--ink);
+  --card: var(--bone);
+  --card-foreground: var(--ink);
+  --popover: var(--bone);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--bone);
+  --secondary: var(--smoke);
+  --secondary-foreground: var(--ink);
+  --muted: var(--smoke);
+  --muted-foreground: oklch(0.5 0.01 60);
+  --accent: var(--smoke);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.5 0.18 25);
+  --destructive-foreground: var(--bone);
+  --border: oklch(0.19 0.004 60 / 0.08);
+  --input: oklch(0.19 0.004 60 / 0.12);
+  --ring: oklch(0.19 0.004 60 / 0.3);
+}
+
+.dark {
+  --background: var(--ink);
+  --foreground: var(--bone);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background-color: var(--ink);
+    color: var(--bone);
+  }
+}
+
+@utility label-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@utility serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
