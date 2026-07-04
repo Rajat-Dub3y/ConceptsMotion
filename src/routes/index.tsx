@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { services, projects, clients, testimonialsFallback } from "@/lib/site-data";
+import { services, clients, testimonialsFallback, getPublishedPortfolioProjects } from "@/lib/site-data";
 import heroImg from "@/assets/hero.jpg";
 
 export const Route = createFileRoute("/")({
+  loader: async () => ({ projects: await getPublishedPortfolioProjects() }),
   component: Home,
   head: () => ({
     meta: [
@@ -21,6 +22,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const { projects } = Route.useLoaderData();
+
   return (
     <SiteLayout>
       {/* Hero */}

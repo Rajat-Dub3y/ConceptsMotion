@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { projects } from "@/lib/site-data";
+import { getPublishedPortfolioProjects } from "@/lib/site-data";
 
 export const Route = createFileRoute("/work/")({
+  loader: async () => ({ projects: await getPublishedPortfolioProjects() }),
   component: WorkIndex,
   head: () => ({
     meta: [
@@ -19,6 +20,8 @@ export const Route = createFileRoute("/work/")({
 });
 
 function WorkIndex() {
+  const { projects } = Route.useLoaderData();
+
   return (
     <SiteLayout>
       <section className="pt-24 md:pt-32 pb-16 px-6">

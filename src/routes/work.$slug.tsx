@@ -1,10 +1,10 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { projects } from "@/lib/site-data";
+import { getPublishedPortfolioProjects } from "@/lib/site-data";
 
 export const Route = createFileRoute("/work/$slug")({
-  loader: ({ params }) => {
-    const project = projects.find((p) => p.slug === params.slug);
+  loader: async ({ params }) => {
+    const project = (await getPublishedPortfolioProjects()).find((p) => p.slug === params.slug);
     if (!project) throw notFound();
     return { project };
   },

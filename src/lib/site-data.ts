@@ -82,6 +82,7 @@ export type StaticProject = {
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
+import { supabase } from "@/integrations/supabase/client";
 
 export const projects: StaticProject[] = [
   {
@@ -115,6 +116,37 @@ export const projects: StaticProject[] = [
       "Building a club, not a brand. Editorial content, member rituals, and a tone of voice that puts the sport second and the people first.",
   },
 ];
+
+export async function getPublishedPortfolioProjects(): Promise<StaticProject[]> {
+  try {
+    const { data, error } = await supabase
+      .from("portfolio")
+      .select("slug, title, client, category, description, cover_image, year")
+      .eq("published", true)
+      .order("sort_order", { ascending: true })
+      .order("created_at", { ascending: false });
+
+    if (error || !data) {
+      return projects;
+    }
+
+    const mapped = data
+      .filter((item) => item.slug && item.title)
+      .map((item) => ({
+        slug: item.slug,
+        title: item.title,
+        client: item.client ?? "Concepts in Motion",
+        category: item.category ?? "Creative Direction",
+        year: item.year ?? "",
+        cover: item.cover_image || projects[0]?.cover || "",
+        description: item.description ?? "",
+      }));
+
+    return mapped.length > 0 ? mapped : projects;
+  } catch {
+    return projects;
+  }
+}
 
 export const testimonialsFallback = [
   {
