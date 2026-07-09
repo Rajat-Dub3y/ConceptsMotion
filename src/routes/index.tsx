@@ -1,7 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { services, clients, testimonialsFallback, getPublishedPortfolioProjects } from "@/lib/site-data";
+import {
+  services,
+  clients,
+  testimonialsFallback,
+  getPublishedPortfolioProjects,
+} from "@/lib/site-data";
 import heroImg from "@/assets/hero.jpg";
+import Testimonials from "@/components/Testimonials";
 
 export const Route = createFileRoute("/")({
   loader: async () => ({ projects: await getPublishedPortfolioProjects() }),
@@ -29,17 +35,14 @@ function Home() {
       {/* Hero */}
       <section className="pt-24 md:pt-32 pb-20 md:pb-24 px-6">
         <div className="max-w-[1440px] mx-auto">
-          <span className="serif-italic text-xl md:text-2xl mb-6 block text-charcoal/80 animate-fade-up">
-            Creative Agency — Goa, India
-          </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.95] text-balance max-w-[20ch] mb-12 tracking-tight animate-fade-up">
             Turning ideas into experiences.
           </h1>
           <div className="flex justify-end">
             <p className="text-base md:text-lg max-w-[52ch] text-pretty text-charcoal/80 leading-relaxed">
-              Based in the lush coastal landscape of Goa, we craft visual narratives for brands
-              that value substance. A boutique studio operating at the intersection of cultural
-              insight and editorial craftsmanship.
+              At Concepts In Motion, we specialize in storytelling, content strategy, and social media management. 
+              We handle everything from high-level planning to day-to-day execution, building your brand's presence 
+              with content that connects
             </p>
           </div>
         </div>
@@ -103,9 +106,7 @@ function Home() {
                 <span className="text-lg group-hover:translate-x-1 transition-transform">
                   {s.title}
                 </span>
-                <span className="label-eyebrow opacity-40">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+                <span className="label-eyebrow opacity-40">{String(i + 1).padStart(2, "0")}</span>
               </Link>
             ))}
           </div>
@@ -161,34 +162,23 @@ function Home() {
       {/* Clients */}
       <section className="py-20 border-y border-ink/5">
         <div className="max-w-[1440px] mx-auto px-6">
-          <span className="label-eyebrow opacity-40 block mb-10 text-center">Selected clients</span>
-          <div className="flex flex-wrap items-center justify-between gap-x-12 gap-y-8 opacity-50">
+          <span className="label-eyebrow opacity-60 block mb-10 text-center">Selected clients</span>
+          <div className="flex flex-wrap px-10 items-center justify-between gap-x-12 gap-y-8 opacity-100">
             {clients.map((c) => (
-              <span key={c.name} className={`text-lg ${c.style}`}>
-                {c.display}
-              </span>
+              <img
+                key={c.name}
+                src={c.logo}
+                alt={c.name}
+                loading="lazy"
+                className="h-10 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* Testimonial */}
-      <section className="py-24 md:py-32 px-6 bg-ink text-bone">
-        <div className="max-w-[1440px] mx-auto text-center">
-          <div className="mb-8 flex justify-center">
-            <div className="size-1 bg-bone/30 rounded-full" />
-          </div>
-          <blockquote className="text-3xl md:text-5xl serif-italic leading-tight text-pretty max-w-[22ch] mx-auto mb-12">
-            "{testimonialsFallback[0].quote}"
-          </blockquote>
-          <cite className="not-italic">
-            <span className="block label-eyebrow opacity-60 mb-1">
-              {testimonialsFallback[0].role}
-            </span>
-            <span className="text-sm font-medium">{testimonialsFallback[0].client}</span>
-          </cite>
-        </div>
-      </section>
+      <Testimonials/>
     </SiteLayout>
   );
 }

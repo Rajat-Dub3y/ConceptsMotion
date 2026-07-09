@@ -72,10 +72,22 @@ function AboutPage() {
           </div>
           <div className="md:col-span-8 grid sm:grid-cols-2 gap-x-12 gap-y-10">
             {[
-              { t: "Strategy first", d: "Every visual decision follows a clear thesis about who the brand is and who it's for." },
-              { t: "Editorial craft", d: "We treat a caption like a headline and a grid like a magazine spread." },
-              { t: "Slow work", d: "We take fewer clients and give them more of our attention. It is the only way we know how to work." },
-              { t: "Quiet confidence", d: "Restraint over decoration. Substance over trend. Meaning over noise." },
+              {
+                t: "Strategy first",
+                d: "Every visual decision follows a clear thesis about who the brand is and who it's for.",
+              },
+              {
+                t: "Editorial craft",
+                d: "We treat a caption like a headline and a grid like a magazine spread.",
+              },
+              {
+                t: "Slow work",
+                d: "We take fewer clients and give them more of our attention. It is the only way we know how to work.",
+              },
+              {
+                t: "Quiet confidence",
+                d: "Restraint over decoration. Substance over trend. Meaning over noise.",
+              },
             ].map((v) => (
               <div key={v.t}>
                 <h3 className="text-xl font-medium mb-3">{v.t}</h3>
@@ -94,12 +106,14 @@ function AboutPage() {
           <div className="md:col-span-8">
             <div className="flex flex-wrap gap-x-10 gap-y-6 opacity-70">
               {clients.map((c) => (
-                <span key={c.name} className={`text-lg ${c.style}`}>{c.display}</span>
+                <span key={c.name} className={`text-lg ${c.style}`}>
+                  {c.display}
+                </span>
               ))}
             </div>
             <p className="mt-10 max-w-[52ch] text-charcoal/70 leading-relaxed">
-              Hospitality. Real estate. Lifestyle. Food & drink. Wellness. Cultural institutions.
-              If your brand values substance over noise, we should probably talk.
+              Hospitality. Real estate. Lifestyle. Food & drink. Wellness. Cultural institutions. If
+              your brand values substance over noise, we should probably talk.
             </p>
           </div>
         </div>

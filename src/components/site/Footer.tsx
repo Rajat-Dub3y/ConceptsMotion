@@ -32,14 +32,38 @@ export function Footer() {
             <div className="space-y-4">
               <span className="label-eyebrow opacity-40 block">Connect</span>
               <nav className="flex flex-col gap-2">
-                <a href="https://instagram.com/conceptsinmotion.in" target="_blank" rel="noreferrer" className="hover:underline underline-offset-4">Instagram</a>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:underline underline-offset-4">LinkedIn</a>
-                <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer" className="hover:underline underline-offset-4">WhatsApp</a>
+                <a
+                  href="https://instagram.com/conceptsinmotion.in"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:underline underline-offset-4"
+                >
+                  Instagram
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:underline underline-offset-4"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://wa.me/919167430791"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:underline underline-offset-4"
+                >
+                  WhatsApp
+                </a>
               </nav>
             </div>
             <div className="space-y-4">
               <span className="label-eyebrow opacity-40 block">Inquiries</span>
-              <a href="mailto:conceptsinmotion.in@gmail.com" className="hover:underline underline-offset-4">
+              <a
+                href="mailto:conceptsinmotion.in@gmail.com"
+                className="hover:underline underline-offset-4"
+              >
                 conceptsinmotion.in@gmail.com
               </a>
               <p className="text-charcoal/60">Goa, India</p>
@@ -48,7 +72,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 pt-10 border-t border-ink/5">
           <span className="text-6xl md:text-9xl font-medium tracking-tighter opacity-[0.06] leading-none select-none">
-            Concepts
+            Concepts in Motion
           </span>
           <p className="label-eyebrow opacity-40">
             © {new Date().getFullYear()} Concepts in Motion. All rights reserved.
@@ -56,7 +80,7 @@ export function Footer() {
         </div>
       </div>
       <a
-        href="https://wa.me/919999999999"
+        href="https://wa.me/919167430791"
         target="_blank"
         rel="noreferrer"
         aria-label="Chat on WhatsApp"

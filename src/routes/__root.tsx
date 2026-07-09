@@ -44,9 +44,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-bone px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-medium tracking-tight text-ink">
-          This page didn't load
-        </h1>
+        <h1 className="text-xl font-medium tracking-tight text-ink">This page didn't load</h1>
         <p className="mt-2 text-sm text-charcoal/70">
           Something went wrong on our end. Try again or head back home.
         </p>

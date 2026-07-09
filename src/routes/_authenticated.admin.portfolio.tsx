@@ -113,9 +113,7 @@ function PortfolioPage() {
 
       <form onSubmit={save} className="border border-ink/10 rounded-sm p-6 space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-medium">
-            {editing ? "Edit project" : "Add a project"}
-          </h2>
+          <h2 className="text-lg font-medium">{editing ? "Edit project" : "Add a project"}</h2>
           {editing && (
             <button
               type="button"
@@ -130,12 +128,34 @@ function PortfolioPage() {
           )}
         </div>
         <div className="grid sm:grid-cols-2 gap-4">
-          <Input label="Slug" value={form.slug} onChange={(v) => setForm({ ...form, slug: v })} required />
-          <Input label="Title" value={form.title} onChange={(v) => setForm({ ...form, title: v })} required />
-          <Input label="Client" value={form.client} onChange={(v) => setForm({ ...form, client: v })} />
-          <Input label="Category" value={form.category} onChange={(v) => setForm({ ...form, category: v })} />
+          <Input
+            label="Slug"
+            value={form.slug}
+            onChange={(v) => setForm({ ...form, slug: v })}
+            required
+          />
+          <Input
+            label="Title"
+            value={form.title}
+            onChange={(v) => setForm({ ...form, title: v })}
+            required
+          />
+          <Input
+            label="Client"
+            value={form.client}
+            onChange={(v) => setForm({ ...form, client: v })}
+          />
+          <Input
+            label="Category"
+            value={form.category}
+            onChange={(v) => setForm({ ...form, category: v })}
+          />
           <Input label="Year" value={form.year} onChange={(v) => setForm({ ...form, year: v })} />
-          <Input label="Cover image URL" value={form.cover_image} onChange={(v) => setForm({ ...form, cover_image: v })} />
+          <Input
+            label="Cover image URL"
+            value={form.cover_image}
+            onChange={(v) => setForm({ ...form, cover_image: v })}
+          />
         </div>
         <label className="block">
           <span className="label-eyebrow opacity-60 block mb-2">Description</span>

@@ -11,7 +11,8 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact — Concepts in Motion" },
       {
         name: "description",
-        content: "Start a conversation with Concepts in Motion — boutique creative marketing in Goa.",
+        content:
+          "Start a conversation with Concepts in Motion — boutique creative marketing in Goa.",
       },
       { property: "og:title", content: "Contact — Concepts in Motion" },
       { property: "og:url", content: "/contact" },
@@ -64,19 +65,37 @@ function ContactPage() {
           <aside className="md:col-span-4 space-y-10">
             <div>
               <span className="label-eyebrow opacity-60 block mb-3">Direct</span>
-              <a href="mailto:conceptsinmotion.in@gmail.com" className="block text-lg hover:underline underline-offset-4">
+              <a
+                href="mailto:conceptsinmotion.in@gmail.com"
+                className="block text-lg hover:underline underline-offset-4"
+              >
                 conceptsinmotion.in@gmail.com
               </a>
-              <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer" className="block text-lg hover:underline underline-offset-4 mt-2">
+              <a
+                href="https://wa.me/919167430791"
+                target="_blank"
+                rel="noreferrer"
+                className="block text-lg hover:underline underline-offset-4 mt-2"
+              >
                 WhatsApp
               </a>
             </div>
             <div>
               <span className="label-eyebrow opacity-60 block mb-3">Social</span>
-              <a href="https://instagram.com/conceptsinmotion.in" target="_blank" rel="noreferrer" className="block text-lg hover:underline underline-offset-4">
+              <a
+                href="https://instagram.com/conceptsinmotion.in"
+                target="_blank"
+                rel="noreferrer"
+                className="block text-lg hover:underline underline-offset-4"
+              >
                 Instagram
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="block text-lg hover:underline underline-offset-4 mt-2">
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+                className="block text-lg hover:underline underline-offset-4 mt-2"
+              >
                 LinkedIn
               </a>
             </div>
@@ -121,7 +140,9 @@ function ContactPage() {
                   aria-hidden="true"
                 />
                 {error && (
-                  <p className="text-sm text-destructive" role="alert">{error}</p>
+                  <p className="text-sm text-destructive" role="alert">
+                    {error}
+                  </p>
                 )}
                 <div className="flex items-center justify-between pt-2">
                   <p className="text-xs text-charcoal/50 max-w-xs">

@@ -2,14 +2,15 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 const nav = [
-  { to: "/work", label: "Work" },
   { to: "/about", label: "About" },
+  { to: "/work", label: "Work" },
   { to: "/services", label: "Services" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  
   useEffect(() => {
     if (open) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
@@ -19,9 +20,18 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 bg-bone/85 backdrop-blur-sm border-b border-ink/5">
+    /* Change: Dynamic background class depending on the 'open' state */
+    <header 
+      className={`sticky top-0 z-50 border-b border-ink/5 transition-colors duration-200 ${
+        open ? "bg-bone" : "bg-bone/85 backdrop-blur-sm"
+      }`}
+    >
       <div className="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="font-medium tracking-tight text-ink hover:opacity-70 transition-opacity">
+        <Link
+          to="/"
+          className="font-medium tracking-tight text-ink hover:opacity-70 transition-opacity"
+          onClick={() => setOpen(false)}
+        >
           Concepts in Motion
         </Link>
         <nav className="hidden md:flex items-center gap-10 text-sm">
@@ -46,6 +56,7 @@ export function Header() {
           {open ? "Close" : "Menu"}
         </button>
       </div>
+      
       {open && (
         <div className="md:hidden fixed inset-0 top-16 bg-bone z-40 px-6 py-12 animate-fade-up">
           <nav className="flex flex-col gap-8">

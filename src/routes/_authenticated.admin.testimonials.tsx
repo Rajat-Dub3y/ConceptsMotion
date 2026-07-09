@@ -106,7 +106,9 @@ function TestimonialsPage() {
 
       <div className="border border-ink/10 rounded-sm divide-y divide-ink/10">
         {list.isLoading && <div className="p-6 text-charcoal/60">Loading…</div>}
-        {list.data?.length === 0 && <div className="p-6 text-charcoal/60">No testimonials yet.</div>}
+        {list.data?.length === 0 && (
+          <div className="p-6 text-charcoal/60">No testimonials yet.</div>
+        )}
         {list.data?.map((t) => (
           <div key={t.id} className="p-5 space-y-3">
             <p className="serif-italic text-lg">"{t.quote}"</p>

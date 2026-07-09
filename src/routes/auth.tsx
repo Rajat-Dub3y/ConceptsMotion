@@ -6,10 +6,7 @@ export const Route = createFileRoute("/auth")({
   ssr: false,
   component: AuthPage,
   head: () => ({
-    meta: [
-      { title: "Sign in — Concepts in Motion" },
-      { name: "robots", content: "noindex" },
-    ],
+    meta: [{ title: "Sign in — Concepts in Motion" }, { name: "robots", content: "noindex" }],
   }),
   beforeLoad: async () => {
     const { data } = await supabase.auth.getSession();
@@ -69,7 +66,11 @@ function AuthPage() {
               className="w-full bg-transparent border-b border-ink/20 py-2 focus:outline-none focus:border-ink"
             />
           </label>
-          {err && <p className="text-sm text-destructive" role="alert">{err}</p>}
+          {err && (
+            <p className="text-sm text-destructive" role="alert">
+              {err}
+            </p>
+          )}
           <button
             type="submit"
             disabled={busy}

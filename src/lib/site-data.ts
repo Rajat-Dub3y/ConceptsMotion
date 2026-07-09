@@ -1,9 +1,20 @@
 export const clients = [
-  { name: "Maiora Realty", display: "MAIORA", style: "font-semibold tracking-tighter" },
-  { name: "Elephant & Co", display: "Elephant & Co", style: "font-serif italic" },
-  { name: "Lash & Co", display: "LASH & CO", style: "uppercase tracking-widest" },
-  { name: "Sunday Racquet Club", display: "SUNDAY RC", style: "font-medium" },
-  { name: "Prana Palate", display: "Prana Palate", style: "italic font-serif" },
+  {
+    name: "Elephant & Co",
+    logo: "/EC.png",
+  },
+  {
+    name: "Lash & Co",
+    logo: "/LC.png",
+  },
+  {
+    name: "Sunday Racquet Club",
+    logo: "/SC.png",
+  },
+  {
+    name: "Prana Palate",
+    logo: "/PP.png",
+  },
 ] as const;
 
 export const services = [
@@ -34,8 +45,7 @@ export const services = [
   {
     slug: "influencer-marketing",
     title: "Influencer Marketing",
-    description:
-      "Considered partnerships with creators who share your aesthetic and audience.",
+    description: "Considered partnerships with creators who share your aesthetic and audience.",
   },
   {
     slug: "photography-videography",
@@ -46,8 +56,7 @@ export const services = [
   {
     slug: "creative-direction",
     title: "Creative Direction",
-    description:
-      "Visual stewardship across every touchpoint, digital and physical.",
+    description: "Visual stewardship across every touchpoint, digital and physical.",
   },
   {
     slug: "community-building",
@@ -64,8 +73,7 @@ export const services = [
   {
     slug: "paid-social-strategy",
     title: "Paid Social Strategy",
-    description:
-      "Efficient, on-brand paid campaigns — with creative that respects the feed.",
+    description: "Efficient, on-brand paid campaigns — with creative that respects the feed.",
   },
 ] as const;
 
@@ -151,13 +159,13 @@ export async function getPublishedPortfolioProjects(): Promise<StaticProject[]> 
 export const testimonialsFallback = [
   {
     quote:
-      "Their ability to translate our intangible values into a visual language surpassed every expectation we had for the brand.",
+      "They completely nailed the look and feel we wanted for our brand. It’s exactly what we had in mind, just executed way better than we expected.",
     client: "Maiora Realty Group",
     role: "Founders",
   },
   {
     quote:
-      "They don't just produce content; they curate an atmosphere that resonates with our audience on a visceral level.",
+      "They genuinely understand our community. The content they create isn't just generic filler; it captures the exact energy of our club.",
     client: "Sunday Racquet Club",
     role: "Founder",
   },

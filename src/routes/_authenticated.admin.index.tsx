@@ -43,17 +43,19 @@ function Dashboard() {
       <section>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-medium">Recent leads</h2>
-          <Link to="/admin/leads" className="label-eyebrow hover:opacity-60">View all →</Link>
+          <Link to="/admin/leads" className="label-eyebrow hover:opacity-60">
+            View all →
+          </Link>
         </div>
         <div className="border border-ink/10 rounded-sm divide-y divide-ink/10">
           {leads.isLoading && <div className="p-6 text-charcoal/60">Loading…</div>}
-          {leads.data?.length === 0 && (
-            <div className="p-6 text-charcoal/60">No leads yet.</div>
-          )}
+          {leads.data?.length === 0 && <div className="p-6 text-charcoal/60">No leads yet.</div>}
           {leads.data?.map((l) => (
             <div key={l.id} className="p-5 flex flex-wrap justify-between gap-4">
               <div>
-                <div className="font-medium">{l.name} {l.company && <span className="text-charcoal/60">— {l.company}</span>}</div>
+                <div className="font-medium">
+                  {l.name} {l.company && <span className="text-charcoal/60">— {l.company}</span>}
+                </div>
                 <div className="text-sm text-charcoal/60">{l.email}</div>
               </div>
               <div className="text-sm text-charcoal/60">
@@ -67,7 +69,9 @@ function Dashboard() {
       <section>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-medium">Pending testimonials</h2>
-          <Link to="/admin/testimonials" className="label-eyebrow hover:opacity-60">Manage →</Link>
+          <Link to="/admin/testimonials" className="label-eyebrow hover:opacity-60">
+            Manage →
+          </Link>
         </div>
         <div className="border border-ink/10 rounded-sm divide-y divide-ink/10">
           {pendingTestimonials.isLoading && <div className="p-6 text-charcoal/60">Loading…</div>}

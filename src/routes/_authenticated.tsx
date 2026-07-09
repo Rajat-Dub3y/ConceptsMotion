@@ -66,16 +66,29 @@ function AdminShell() {
             CIM Admin
           </Link>
           <nav className="hidden md:flex items-center gap-6 text-sm text-charcoal/80">
-            <Link to="/admin" activeOptions={{ exact: true }} activeProps={{ className: "text-ink underline underline-offset-4" }}>
+            <Link
+              to="/admin"
+              activeOptions={{ exact: true }}
+              activeProps={{ className: "text-ink underline underline-offset-4" }}
+            >
               Dashboard
             </Link>
-            <Link to="/admin/leads" activeProps={{ className: "text-ink underline underline-offset-4" }}>
+            <Link
+              to="/admin/leads"
+              activeProps={{ className: "text-ink underline underline-offset-4" }}
+            >
               Leads
             </Link>
-            <Link to="/admin/testimonials" activeProps={{ className: "text-ink underline underline-offset-4" }}>
+            <Link
+              to="/admin/testimonials"
+              activeProps={{ className: "text-ink underline underline-offset-4" }}
+            >
               Testimonials
             </Link>
-            <Link to="/admin/portfolio" activeProps={{ className: "text-ink underline underline-offset-4" }}>
+            <Link
+              to="/admin/portfolio"
+              activeProps={{ className: "text-ink underline underline-offset-4" }}
+            >
               Portfolio
             </Link>
           </nav>
