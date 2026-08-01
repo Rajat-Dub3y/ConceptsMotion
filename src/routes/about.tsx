@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import aboutImg from "@/assets/about.jpg";
+import aboutImg from "@/assets/about.png";
 import { clients } from "@/lib/site-data";
 
 export const Route = createFileRoute("/about")({

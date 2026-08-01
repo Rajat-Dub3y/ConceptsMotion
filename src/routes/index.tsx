@@ -6,7 +6,7 @@ import {
   testimonialsFallback,
   getPublishedPortfolioProjects,
 } from "@/lib/site-data";
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/hero.png";
 import Testimonials from "@/components/Testimonials";
 
 export const Route = createFileRoute("/")({
@@ -57,7 +57,7 @@ function Home() {
             width={1920}
             height={1280}
             fetchPriority="high"
-            className="w-full aspect-[16/9] object-cover rounded-sm"
+            className="w-full aspect-[16/6] object-cover rounded-sm"
           />
         </div>
       </section>

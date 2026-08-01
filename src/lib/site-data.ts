@@ -87,21 +87,21 @@ export type StaticProject = {
   description: string;
 };
 
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
+import work1 from "@/assets/LC.jpeg";
+import work2 from "@/assets/EC.jpeg";
+import work3 from "@/assets/SC.jpeg";
 import { supabase } from "@/integrations/supabase/client";
 
 export const projects: StaticProject[] = [
   {
-    slug: "maiora-realty",
-    title: "Elevated Living",
-    client: "Maiora Realty",
-    category: "Visual Identity, Strategy",
+    slug: "lash-and-co",
+    title: "Beauty, Refined",
+    client: "Lash & Co.",
+    category: "Brand Strategy, Content Creation",
     year: "2024",
     cover: work1,
     description:
-      "A visual system for a boutique real-estate label — from typography and photography to sales collateral and social. Restrained, architectural, unmistakably premium.",
+      "Developed a premium visual identity and content strategy for Lash & Co., capturing the salon's elegance through editorial photography, social-first content, and a cohesive brand aesthetic that elevated its digital presence and strengthened client engagement.",
   },
   {
     slug: "elephant-and-co",
@@ -138,7 +138,7 @@ export async function getPublishedPortfolioProjects(): Promise<StaticProject[]> 
       return projects;
     }
 
-    const mapped = data
+    const dbProjects: StaticProject[] = data
       .filter((item) => item.slug && item.title)
       .map((item) => ({
         slug: item.slug,
@@ -150,7 +150,13 @@ export async function getPublishedPortfolioProjects(): Promise<StaticProject[]> 
         description: item.description ?? "",
       }));
 
-    return mapped.length > 0 ? mapped : projects;
+    const merged = [...projects, ...dbProjects];
+
+    const uniqueProjects = Array.from(
+      new Map(merged.map((project) => [project.slug, project])).values()
+    );
+
+    return uniqueProjects;
   } catch {
     return projects;
   }
