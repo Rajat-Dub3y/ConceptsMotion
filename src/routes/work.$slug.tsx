@@ -62,52 +62,105 @@ function ProjectNotFound() {
 
 function ProjectPage() {
   const { project: p } = Route.useLoaderData();
+
+  const gallery = p.images?.length ? p.images : [p.cover];
+  const hero = gallery[0] ?? p.cover;
+  const portrait = gallery[1]; // undefined if only 1 image
+  const gridLeft = gallery[2]; // undefined if fewer than 3 images
+  const gridRight = gallery[3]; // undefined if fewer than 4 images
+
   return (
     <SiteLayout>
-      <section className="pt-24 md:pt-32 pb-12 px-6">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-wrap items-center gap-3 label-eyebrow text-charcoal/60">
+      {/* Header bar */}
+      <section className="pt-20 md:pt-24 pb-6 px-6 border-b border-ink/10">
+        <div className="max-w-[1200px] mx-auto flex flex-wrap items-baseline justify-between gap-4">
+          <h1 className="text-2xl md:text-3xl font-medium tracking-tight">{p.title}</h1>
+          <div className="flex items-center gap-3 label-eyebrow text-charcoal/60 text-xs">
             <span>{p.client}</span>
-            <span>/</span>
-            <span>{p.category}</span>
             <span>/</span>
             <span>{p.year}</span>
           </div>
-          <h1 className="mt-6 text-5xl md:text-7xl font-medium tracking-tight text-balance max-w-[24ch]">
-            {p.title}
-          </h1>
         </div>
       </section>
 
-      <section className="px-6 pb-16">
-        <div className="max-w-[1440px] mx-auto">
+      {/* Hero anchor */}
+      <section className="px-6 pt-10 pb-14 md:pb-16">
+        <div className="max-w-[1200px] mx-auto">
           <img
-            src={p.cover}
-            alt={`${p.title} cover`}
-            width={1600}
-            height={2000}
-            className="w-full aspect-[4/5] md:aspect-[16/10] object-cover rounded-sm"
+            src={hero}
+            alt={`${p.title} — hero`}
+            width={1920}
+            height={900}
+            fetchPriority="high"
+            className="w-full max-h-[60vh] aspect-[16/9] object-cover rounded-sm"
           />
         </div>
       </section>
 
-      <section className="pb-24 md:pb-32 px-6">
-        <div className="max-w-[1440px] mx-auto grid md:grid-cols-12 gap-12">
-          <div className="md:col-span-4">
-            <span className="label-eyebrow text-charcoal/60">Overview</span>
+      {/* Split row — overview left, portrait image right (only if a 2nd image exists) */}
+      <section className="px-6 pb-14 md:pb-16">
+        <div className="max-w-[1200px] mx-auto grid md:grid-cols-12 gap-8 md:gap-10 items-start">
+          <div className={portrait ? "md:col-span-5" : "md:col-span-7"}>
+            <span className="label-eyebrow text-charcoal/60 text-xs">Overview</span>
+            <p className="mt-4 text-base md:text-lg leading-relaxed text-pretty">
+              {p.description}
+            </p>
+            <div className="mt-6 text-xs text-charcoal/60">{p.category}</div>
           </div>
-          <div className="md:col-span-8">
-            <p className="text-xl md:text-2xl leading-relaxed text-pretty">{p.description}</p>
-          </div>
+          {portrait && (
+            <div className="md:col-span-7">
+              <img
+                src={portrait}
+                alt={`${p.title} — detail`}
+                width={1000}
+                height={750}
+                loading="lazy"
+                className="w-full max-h-[45vh] aspect-[4/3] object-cover rounded-sm"
+              />
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="pb-32 px-6 border-t border-ink/5 pt-16">
-        <div className="max-w-[1440px] mx-auto flex justify-between items-center">
-          <Link to="/work" className="label-eyebrow hover:opacity-60 transition-opacity">
+      {/* Closing grid — adapts to 1 or 2 remaining images, hidden if none */}
+      {gridLeft && (
+        <section className="px-6 pb-20 md:pb-24">
+          <div
+            className={`max-w-[1200px] mx-auto grid gap-4 md:gap-6 ${
+              gridRight ? "grid-cols-2" : "grid-cols-1"
+            }`}
+          >
+            <img
+              src={gridLeft}
+              alt={`${p.title} — image 3`}
+              width={gridRight ? 700 : 1200}
+              height={gridRight ? 500 : 675}
+              loading="lazy"
+              className={`w-full object-cover rounded-sm ${
+                gridRight ? "max-h-[38vh] aspect-[7/5]" : "max-h-[50vh] aspect-[16/9]"
+              }`}
+            />
+            {gridRight && (
+              <img
+                src={gridRight}
+                alt={`${p.title} — image 4`}
+                width={700}
+                height={500}
+                loading="lazy"
+                className="w-full max-h-[38vh] aspect-[7/5] object-cover rounded-sm"
+              />
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Footer nav */}
+      <section className="pb-24 px-6 border-t border-ink/5 pt-10">
+        <div className="max-w-[1200px] mx-auto flex justify-between items-center">
+          <Link to="/work" className="label-eyebrow hover:opacity-60 transition-opacity text-xs">
             ← All work
           </Link>
-          <Link to="/contact" className="label-eyebrow hover:opacity-60 transition-opacity">
+          <Link to="/contact" className="label-eyebrow hover:opacity-60 transition-opacity text-xs">
             Start a project →
           </Link>
         </div>

@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { getPublishedPortfolioProjects } from "@/lib/site-data";
+import { ProjectCarousel } from "@/components/site/ProjectCarousel";
 
 export const Route = createFileRoute("/work/")({
   loader: async () => ({ projects: await getPublishedPortfolioProjects() }),
@@ -19,6 +20,9 @@ export const Route = createFileRoute("/work/")({
   }),
 });
 
+// Alternating vertical offset so equal-size cards still feel arranged, not gridded
+const offsetPattern = ["", "lg:mt-20", "lg:mt-8", "lg:mt-28"];
+
 function WorkIndex() {
   const { projects } = Route.useLoaderData();
 
@@ -34,32 +38,29 @@ function WorkIndex() {
       </section>
 
       <section className="pb-24 px-6">
-        <div className="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-10 md:gap-16">
+        <div className="max-w-[1440px] mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
           {projects.map((p, i) => (
             <Link
               key={p.slug}
               to="/work/$slug"
               params={{ slug: p.slug }}
-              className={`group ${i % 2 === 1 ? "md:mt-24" : ""}`}
+              className={`group ${offsetPattern[i % offsetPattern.length]}`}
             >
-              <div className="w-full aspect-[4/5] overflow-hidden rounded-sm bg-smoke">
-                <img
-                  src={p.cover}
+              <div className="w-full aspect-[3/4] overflow-hidden rounded-sm bg-smoke">
+                <ProjectCarousel
+                  images={p.images?.length ? p.images.slice(0, 4) : [p.cover]}
                   alt={`${p.title} — ${p.client}`}
-                  loading="lazy"
-                  width={1000}
-                  height={1250}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 />
               </div>
-              <div className="mt-6 flex justify-between items-start">
-                <div>
-                  <h2 className="text-2xl font-medium tracking-tight">{p.title}</h2>
-                  <p className="mt-1 text-sm text-charcoal/60">
-                    {p.client} — {p.category}
-                  </p>
+              <div className="mt-5">
+                <h2 className="text-lg font-medium tracking-tight leading-snug">{p.title}</h2>
+                <p className="mt-1 text-xs text-charcoal/60">
+                  {p.client}
+                </p>
+                <div className="mt-2 flex items-center justify-between">
+                  <span className="text-xs text-charcoal/50">{p.category}</span>
+                  <span className="serif-italic text-xs">{p.year}</span>
                 </div>
-                <span className="serif-italic text-sm">{p.year}</span>
               </div>
             </Link>
           ))}
