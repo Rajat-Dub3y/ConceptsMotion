@@ -53,13 +53,13 @@ function AboutPage() {
           <div className="md:col-span-8 space-y-6 text-lg md:text-xl leading-relaxed text-pretty">
             <p>
               Concepts in Motion began as a small studio in Goa with an obsession for craft and a
-              refusal to shout. We work with founders, chefs, hoteliers, and cultural entrepreneurs
+              refusal to shout. We work with founders and cultural entrepreneurs,
               who care as much about the details as we do.
             </p>
             <p>
               Every project starts with a long conversation and a slow read. We spend more time
-              listening than pitching, and more time editing than adding. What we ship should feel
-              inevitable — like it could not have been anything else.
+              listening than pitching, and more time editing than adding. What we create should feel
+              inevitable like it could not have been anything else.
             </p>
           </div>
         </div>

@@ -118,7 +118,7 @@ export const projects: StaticProject[] = [
     title: "Beauty, Refined",
     client: "Lash & Co.",
     category: "Brand Strategy, Content Creation",
-    year: "2024",
+    year: " ",
     cover: LC1,
     images: [LC1, LC2, LC3, LC4, LC5],
     description:
@@ -130,7 +130,7 @@ export const projects: StaticProject[] = [
     title: "Community & Culture",
     client: "Elephant & Co",
     category: "Campaign Creative Direction",
-    year: "2024",
+    year: " ",
     cover: EC1,
     images: [EC1, EC2, EC3],
     description:
@@ -142,7 +142,7 @@ export const projects: StaticProject[] = [
     title: "Sunday Ritual",
     client: "Sunday Racquet Club",
     category: "Social Content, Community",
-    year: "2023",
+    year: "",
     cover: SC5,
     images: [SC1, SC2, SC3, SC4, SC5],
     description:
@@ -154,7 +154,7 @@ export const projects: StaticProject[] = [
     title: "Elevated Living",
     client: "Maiora Realty Group",
     category: "Visual Identity, Strategy",
-    year: "2024",
+    year: " ",
     cover: M1,
     images: [M1, M2, M3],
     description:
