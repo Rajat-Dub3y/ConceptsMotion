@@ -50,7 +50,7 @@ function Home() {
       </section>
 
       {/* Hero image */}
-      <section className="px-6 pb-24">
+      <section className="px-2 pb-24">
         <div className="max-w-[1440px] mx-auto">
           <img
             src={heroImg}
@@ -58,7 +58,7 @@ function Home() {
             width={1920}
             height={1280}
             fetchPriority="high"
-            className="w-full aspect-[16/6] object-cover rounded-sm"
+            className="w-full aspect-[4/5] sm:aspect-[16/9] lg:aspect-[16/6] object-cover rounded-sm"
           />
         </div>
       </section>

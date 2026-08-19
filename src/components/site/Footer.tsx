@@ -28,7 +28,7 @@ export function Footer() {
               </Link>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-12 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 text-sm">
             <div className="space-y-4">
               <span className="label-eyebrow opacity-40 block">Connect</span>
               <nav className="flex flex-col gap-2">
