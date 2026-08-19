@@ -27,7 +27,7 @@ function AboutPage() {
         <div className="max-w-[1440px] mx-auto">
           <span className="label-eyebrow text-charcoal/60">The studio</span>
           <h1 className="mt-6 text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-balance max-w-[18ch]">
-            A studio for brands with something to say.
+            For brands with a story worth telling
           </h1>
         </div>
       </section>

@@ -151,7 +151,7 @@ export const projects: StaticProject[] = [
 
   {
     slug: "maiora-realty",
-    title: "Elevated Living",
+    title: "Quiet Distinction",
     client: "Maiora Realty Group",
     category: "Visual Identity, Strategy",
     year: " ",
